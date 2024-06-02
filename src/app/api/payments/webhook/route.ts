@@ -54,6 +54,10 @@ export async function POST(req: NextRequest) {
         message: "checkout.session.completed received received successfully",
       });
     }
+    return NextResponse.json({
+      status: 500,
+      error: `Unhandled event type: ${event.type}`,
+    });
   } catch (error) {
     console.error("Stripe webhook handler experienced an error", error);
     return NextResponse.json({
