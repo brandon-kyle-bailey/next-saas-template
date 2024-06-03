@@ -9,6 +9,7 @@ export interface UpdateUserActionProps {
   profile_image_url?: string;
   user_id?: string;
   subscription?: string;
+  credits?: string;
 }
 
 export async function updateUserAction(props: UpdateUserActionProps) {

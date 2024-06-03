@@ -19,6 +19,7 @@ model user {
   profile_image_url String?
   user_id           String   @unique
   subscription      String?
+  credits           String?
 }
 
 model payment {

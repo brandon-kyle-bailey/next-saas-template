@@ -11,7 +11,8 @@
     "prisma:init": "dotenv -e .env.local -- npx prisma init --datasource-provider $1",
     "prisma:db:pull": "dotenv -e .env.local -- npx prisma db pull",
     "prisma:client:generate": "dotenv -e .env.local -- npx prisma generate",
-    "prisma:migration:run": "dotenv -e .env.local -- npx prisma migrate dev --name $1",
+    "prisma:migration:generate": "dotenv -e .env.local -- npx prisma migrate dev --name $1",
+    "prisma:migration:run": "dotenv -e .env.local -- npx prisma db push",
     "start:reverse-proxy": "ngrok http 3000",
     "prisma:start:studio": "dotenv -e .env.local -- npx prisma studio"
   },

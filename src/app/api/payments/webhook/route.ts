@@ -6,6 +6,11 @@ import {
 } from "@/lib/db/prisma/actions/create/create-subscription.prisma.action";
 import { updateInvoiceAction } from "@/lib/db/prisma/actions/update/update-invoice.prisma.action";
 import { updateUserAction } from "@/lib/db/prisma/actions/update/update-user.prisma.action";
+import { getUserAction } from "@/lib/db/prisma/actions/get/get-user.prisma.action";
+import {
+  createPaymentAction,
+  CreatePaymentActionProps,
+} from "@/lib/db/prisma/actions/create/create-payment.prisma.action";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -130,6 +135,25 @@ export async function POST(req: NextRequest) {
         });
       } else {
         const now = new Date(session.created * 1000).toISOString();
+        const user = await getUserAction({ user_id: metadata!.userId });
+        const payment: CreatePaymentActionProps = {
+          stripe_id: session.id,
+          email: metadata!.email,
+          amount: String(session.amount_total! / 100),
+          payment_time: now,
+          payment_date: now,
+          currency: session.currency!,
+          user_id: metadata!.userId,
+          customer_details: JSON.stringify(session.customer_details),
+          payment_intent: session.payment_intent!.toString(),
+        };
+        const createPaymentResult = await createPaymentAction(payment);
+        const credits =
+          Number(user!.credits ?? 0) + (session.amount_total ?? 0) / 100;
+        const updateUserResult = await updateUserAction({
+          email: metadata!.email,
+          credits: String(credits),
+        });
       }
       return NextResponse.json({
         status: 200,
