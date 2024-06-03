@@ -2,12 +2,18 @@
 import { ModeToggleComponent } from "@/components/custom/mode-toggle.component";
 import { Button } from "@/components/ui/button";
 import { handleCheckout } from "@/lib/functions/payments/checkout/handle-checkout";
-import { useUser } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 
 export default function Home() {
   const { user } = useUser();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-evenly p-24">
       <ModeToggleComponent />
       <div className="flex flex-row items-center justify-evenly space-x-4">
         <Button
@@ -31,6 +37,14 @@ export default function Home() {
         >
           Purchase Enterprise Plan
         </Button>
+      </div>
+      <div className="flex flex-row items-center justify-evenly space-x-4">
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </main>
   );

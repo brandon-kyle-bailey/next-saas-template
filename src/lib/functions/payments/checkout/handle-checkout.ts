@@ -3,12 +3,12 @@ import { toast } from "sonner";
 
 export const handleCheckout = async (
   user: any,
-  priceId: string,
+  productId: string,
   subscription: boolean
 ) => {
   try {
     const { createCheckoutSession, redirectToCheckout } = withStripeCheckout();
-    const session = await createCheckoutSession(user, priceId, subscription);
+    const session = await createCheckoutSession(user, productId, subscription);
     if (!session.sessionId) {
       console.error(`Failed to create checkout session: ${session}`);
       toast.error("Failed to create checkout session");

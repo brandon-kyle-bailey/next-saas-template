@@ -1,3 +1,5 @@
+import { createUserAction } from "@/lib/db/prisma/actions/create/create-user.prisma.action";
+import { updateUserAction } from "@/lib/db/prisma/actions/update/update-user.prisma.action";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -7,6 +9,7 @@ const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET!;
 
 export async function POST(req: Request) {
   try {
+    console.log("webhook hit");
     const requestHeaders = headers();
     const svix_id = requestHeaders.get("svix-id");
     const svix_timestamp = requestHeaders.get("svix-timestamp");
@@ -28,6 +31,14 @@ export async function POST(req: Request) {
 
     if (webhookEvent.type === "user.created") {
       console.log("user.created event with payload", payload);
+      const user = await createUserAction({
+        email: payload?.data?.email_addresses?.[0]?.email_address,
+        first_name: payload?.data?.first_name,
+        last_name: payload?.data?.last_name,
+        profile_image_url: payload?.data?.profile_image_url,
+        user_id: payload?.data?.id,
+      });
+      console.log("Created user", user);
       return NextResponse.json({
         status: 201,
         message: "user created",
@@ -36,6 +47,14 @@ export async function POST(req: Request) {
 
     if (webhookEvent.type === "user.updated") {
       console.log("user.updated event with payload", payload);
+      const user = await updateUserAction({
+        email: payload?.data?.email_addresses?.[0]?.email_address,
+        first_name: payload?.data?.first_name,
+        last_name: payload?.data?.last_name,
+        profile_image_url: payload?.data?.profile_image_url,
+        user_id: payload?.data?.id,
+      });
+      console.log("Updated user", user);
       return NextResponse.json({
         status: 201,
         message: "user updated",

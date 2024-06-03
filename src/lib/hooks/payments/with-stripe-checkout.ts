@@ -9,17 +9,17 @@ export function withStripeCheckout(): {
 } {
   const createCheckoutSession = async (
     user: any,
-    priceId: string,
+    productId: string,
     subscription: boolean
   ) => {
     try {
-      console.log(user, priceId, subscription);
+      console.log(user, productId, subscription);
       const { data } = await axios.post(
         process.env.NEXT_PUBLIC_CREATE_STRIPE_CHECKOUT_SESSION_ENDPOINT!,
         {
           userId: user?.id,
           email: user?.emailAddresses?.[0]?.emailAddress,
-          priceId,
+          priceId: productId,
           subscription,
         }
       );
