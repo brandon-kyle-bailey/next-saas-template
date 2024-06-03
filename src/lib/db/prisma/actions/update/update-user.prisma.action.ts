@@ -7,7 +7,7 @@ export interface UpdateUserActionProps {
   first_name?: string;
   last_name?: string;
   profile_image_url?: string;
-  user_id: string;
+  user_id?: string;
   subscription?: string;
 }
 

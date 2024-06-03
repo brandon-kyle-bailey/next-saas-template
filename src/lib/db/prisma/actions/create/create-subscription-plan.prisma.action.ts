@@ -18,7 +18,7 @@ export async function createSubscriptionPlanAction(
     console.log(
       `Create subscription_plan action invoked with props...${props}`
     );
-    await prisma.subscriptions_plans.create({ data: props });
+    return await prisma.subscriptions_plans.create({ data: props });
   } catch (error) {
     console.error(
       `Create subscription_plan action encountered an error: ${error}`

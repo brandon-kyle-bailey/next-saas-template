@@ -1,5 +1,11 @@
 import Stripe from "stripe";
 import { NextRequest, NextResponse } from "next/server";
+import {
+  createSubscriptionAction,
+  CreateSubscriptionActionProps,
+} from "@/lib/db/prisma/actions/create/create-subscription.prisma.action";
+import { updateInvoiceAction } from "@/lib/db/prisma/actions/update/update-invoice.prisma.action";
+import { updateUserAction } from "@/lib/db/prisma/actions/update/update-user.prisma.action";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -14,6 +20,26 @@ export async function POST(req: NextRequest) {
     );
     if (event.type === "customer.subscription.created") {
       console.log("customer.subscription.created received");
+      const stripeSubscription = event.data.object as Stripe.Subscription;
+      const customer = await stripe.customers.retrieve(
+        stripeSubscription.customer.toString()
+      );
+      if (customer.deleted) {
+        return NextResponse.json({
+          status: 500,
+          error: "Customer does not exist.",
+        });
+      }
+      const subscription: CreateSubscriptionActionProps = {
+        subscription_id: stripeSubscription.id,
+        stripe_user_id: stripeSubscription.customer.toString(),
+        status: stripeSubscription.status,
+        start_date: new Date(stripeSubscription.created * 1000).toISOString(),
+        plan_id: stripeSubscription.items.data[0]?.price.id,
+        user_id: stripeSubscription.metadata?.userId ?? "",
+        email: customer.email!,
+      };
+      const result = await createSubscriptionAction(subscription);
       return NextResponse.json({
         status: 200,
         message: "customer.subscription.created received received successfully",
@@ -21,6 +47,25 @@ export async function POST(req: NextRequest) {
     }
     if (event.type === "customer.subscription.updated") {
       console.log("customer.subscription.updated received");
+      const stripeSubscription = event.data.object as Stripe.Subscription;
+      const customer = await stripe.customers.retrieve(
+        stripeSubscription.customer.toString()
+      );
+      if (customer.deleted) {
+        return NextResponse.json({
+          status: 500,
+          error: "Customer does not exist.",
+        });
+      }
+      const subscription = {
+        subscription_id: stripeSubscription.id,
+        stripe_user_id: stripeSubscription.customer,
+        status: stripeSubscription.status,
+        start_date: new Date(stripeSubscription.created * 1000).toISOString(),
+        plan_id: stripeSubscription.items.data[0]?.price.id,
+        user_id: stripeSubscription.metadata?.userId ?? "",
+        email: customer.email,
+      };
       return NextResponse.json({
         status: 200,
         message: "customer.subscription.updated received received successfully",
@@ -28,6 +73,25 @@ export async function POST(req: NextRequest) {
     }
     if (event.type === "customer.subscription.deleted") {
       console.log("customer.subscription.deleted received");
+      const stripeSubscription = event.data.object as Stripe.Subscription;
+      const customer = await stripe.customers.retrieve(
+        stripeSubscription.customer.toString()
+      );
+      if (customer.deleted) {
+        return NextResponse.json({
+          status: 500,
+          error: "Customer does not exist.",
+        });
+      }
+      const subscription = {
+        subscription_id: stripeSubscription.id,
+        stripe_user_id: stripeSubscription.customer,
+        status: stripeSubscription.status,
+        start_date: new Date(stripeSubscription.created * 1000).toISOString(),
+        plan_id: stripeSubscription.items.data[0]?.price.id,
+        user_id: stripeSubscription.metadata?.userId ?? "",
+        email: customer.email,
+      };
       return NextResponse.json({
         status: 200,
         message: "customer.subscription.deleted received received successfully",
@@ -49,6 +113,24 @@ export async function POST(req: NextRequest) {
     }
     if (event.type === "checkout.session.completed") {
       console.log("checkout.session.completed received");
+      const session = event.data.object as Stripe.Checkout.Session;
+      const metadata = session.metadata;
+      if (metadata?.subscription) {
+        const subscriptionId = session.subscription;
+        await stripe.subscriptions.update(subscriptionId as string, {
+          metadata,
+        });
+        const updateInvoiceResult = await updateInvoiceAction({
+          email: metadata!.email,
+          user_id: metadata!.userId,
+        });
+        const updateUserResult = await updateUserAction({
+          email: metadata!.email,
+          subscription: session.id,
+        });
+      } else {
+        const now = new Date(session.created * 1000).toISOString();
+      }
       return NextResponse.json({
         status: 200,
         message: "checkout.session.completed received received successfully",

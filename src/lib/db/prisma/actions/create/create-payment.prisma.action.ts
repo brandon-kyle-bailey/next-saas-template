@@ -17,7 +17,7 @@ export interface CreatePaymentActionProps {
 export async function createPaymentAction(props: CreatePaymentActionProps) {
   try {
     console.log(`Create payment action invoked with props...${props}`);
-    await prisma.payments.create({ data: props });
+    return await prisma.payments.create({ data: props });
   } catch (error) {
     console.error(`Create payment action encountered an error: ${error}`);
     await prisma.$disconnect();

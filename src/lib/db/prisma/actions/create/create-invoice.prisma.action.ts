@@ -16,7 +16,7 @@ export interface CreateInvoiceActionProps {
 export async function createInvoiceAction(props: CreateInvoiceActionProps) {
   try {
     console.log(`Create invoice action invoked with props...${props}`);
-    await prisma.invoices.create({ data: props });
+    return await prisma.invoices.create({ data: props });
   } catch (error) {
     console.error(`Create invoice action encountered an error: ${error}`);
     await prisma.$disconnect();
