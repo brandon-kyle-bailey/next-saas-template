@@ -16,7 +16,7 @@ export interface UpdateInvoiceActionProps {
 export async function updateInvoiceAction(props: UpdateInvoiceActionProps) {
   try {
     console.log(`Update invoice action invoked with props...${props}`);
-    return await prisma.invoices.updateMany({
+    return await prisma.invoice.updateMany({
       where: { email: props.email },
       data: props,
     });

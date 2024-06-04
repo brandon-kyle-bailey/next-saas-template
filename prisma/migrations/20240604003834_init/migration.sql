@@ -7,7 +7,8 @@ CREATE TABLE "user" (
     "last_name" TEXT,
     "profile_image_url" TEXT,
     "user_id" TEXT NOT NULL,
-    "subscription" TEXT
+    "subscription" TEXT,
+    "credits" TEXT
 );
 
 -- CreateTable
@@ -71,3 +72,6 @@ CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_user_id_key" ON "user"("user_id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "subscription_subscription_id_key" ON "subscription"("subscription_id");
