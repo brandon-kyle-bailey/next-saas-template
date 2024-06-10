@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/providers/ui/theme-provider";
 import { AuthProvider } from "@/lib/providers/auth/auth-provider";
 import { Toaster } from "sonner";
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html lang="en suppressHydrationWarning">
+      <html lang="en suppressHydrationWarning" className={GeistSans.className}>
         <head />
         <body>
           <ThemeProvider
