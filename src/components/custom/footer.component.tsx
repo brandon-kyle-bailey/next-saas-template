@@ -16,59 +16,67 @@ export default function FooterComponent() {
     console.log(data);
   };
   return (
-    <footer className="border-t flex flex-col-reverse lg:flex-row w-full">
-      <div className="flex flex-row lg:flex-col p-4 lg:w-1/2 items-center border-r">
-        <div className="flex flex-col justify-evenly w-full lg:w-3/4 p-10">
-          <div className="flex flex-row justify-between border-b mb-10 pb-6">
-            <ul className="flex flex-col space-y-4">
-              <p className="font-medium mb-4">Socials</p>
-              <li>
-                <Link
-                  rel="noopeneer noreferrer"
-                  href={"/https://twitter.com/brandonkpbailey"}
-                  target="_blank"
-                >
-                  Twitter
-                </Link>
-              </li>
-            </ul>
-            <ul className="flex flex-col space-y-4">
-              <p className="font-medium mb-4">Helpful Links</p>
-              <li>
-                <Link rel="noopeneer noreferrer" href={"/"} target="_blank">
-                  Docs
-                </Link>
-              </li>
-              <li>
-                <Link href={"/"}>Methodology</Link>
-              </li>
-            </ul>
+    <footer className="border-t flex flex-col-reverse lg:flex-row">
+      <div className="p-10 flex flex-row justify-center lg:w-1/2">
+        <div className="w-1/2">
+          <div className="flex flex-row gap-4 justify-between">
+            <div>
+              <p className="font-medium">Socials</p>
+              <ul className="mt-6 space-y-4 text-sm">
+                <li>
+                  <Link
+                    href={"https://twitter.com/brandonkpbailey"}
+                    target="_blank"
+                    rel="noopeneer noreferrer"
+                  >
+                    Twitter
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-medium">Helpful Links</p>
+              <ul className="mt-6 space-y-4 text-sm">
+                <li>
+                  <Link href={"/"} target="_blank" rel="noopeneer noreferrer">
+                    Docs
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"/"} target="_blank" rel="noopeneer noreferrer">
+                    Methodology
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="flex flex-col space-y-4 text-xs">
-            <ul className="flex flex-row space-x-4">
+          <div className="mt-8">
+            <ul className="flex flex-wrap gap-4 text-xs">
               <li>
-                <Link rel="noopeneer noreferrer" href={"/"} target="_blank">
+                <Link href={"/"} target="_blank" rel="noopeneer noreferrer">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link rel="noopeneer noreferrer" href={"/"} target="_blank">
+                <Link href={"/"} target="_blank" rel="noopeneer noreferrer">
                   Privacy Policy
                 </Link>
               </li>
             </ul>
-            <p className="">&copy; Your Company. All rights reserved.</p>
+            <p className="mt-8 text-xs">
+              &copy; SomeCompany LLC. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
-      <div className="p-10 flex flex-col w-full lg:w-1/2">
+      <div className="p-10 flex flex-col lg:w-1/2">
         <div>
           <h2 className="text-2xl font-medium">Join our newsletter!</h2>
           <p>This is an example newsletter email input.</p>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col border rounded-xl p-4 lg:w-3/4 mt-6 gap-3"
+          className="flex flex-col border rounded-xl p-4 lg:w-2/3 mt-6 gap-3"
         >
           <Input
             {...register("email", { required: true })}
