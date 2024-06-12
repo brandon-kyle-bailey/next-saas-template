@@ -12,7 +12,7 @@ export function NavBarComponent() {
   const { userId } = useAuth();
 
   return (
-    <div className="flex flex-row justify-between p-2 border">
+    <div className="flex flex-row justify-between p-2 border-b dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white">
       <div className="flex flex-row items-center">
         <Link href="/">
           <Boxes />

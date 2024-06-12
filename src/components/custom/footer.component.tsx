@@ -16,10 +16,10 @@ export default function FooterComponent() {
     console.log(data);
   };
   return (
-    <footer className="border-t flex flex-col-reverse lg:flex-row">
-      <div className="p-10 flex flex-row justify-center lg:w-1/2">
-        <div className="w-1/2">
-          <div className="flex flex-row gap-4 justify-between">
+    <footer className="border-t dark:border-neutral-800 flex flex-col-reverse lg:flex-row dark:bg-black dark:bg-opacity-50 bg-white">
+      <div className="p-10 flex flex-col lg:flex-row justify-center lg:w-1/2">
+        <div className="lg:w-1/2">
+          <div className="flex flex-row gap-4 justify-evenly lg:justify-between">
             <div>
               <p className="font-medium">Socials</p>
               <ul className="mt-6 space-y-4 text-sm">
@@ -76,7 +76,7 @@ export default function FooterComponent() {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col border rounded-xl p-4 lg:w-2/3 mt-6 gap-3"
+          className="flex flex-col border dark:border-neutral-800 rounded-xl p-4 lg:w-2/3 mt-6 gap-3"
         >
           <Input
             {...register("email", { required: true })}

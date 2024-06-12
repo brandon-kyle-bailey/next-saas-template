@@ -1,13 +1,17 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+const plugin = require("tailwindcss/plugin");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -74,7 +78,62 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ matchUtilities, theme }: any) {
+      matchUtilities(
+        {
+          "bg-dotted-spacing": (value: any) => ({
+            "--tw-bg-dotted-spacing-x": value,
+            "--tw-bg-dotted-spacing-y": value,
+            "background-size":
+              "var(--tw-bg-dotted-spacing-x) var(--tw-bg-dotted-spacing-y)",
+          }),
+          "bg-dotted-spacing-x": (value: any) => ({
+            "--tw-bg-dotted-spacing-x": value,
+            "background-size":
+              "var(--tw-bg-dotted-spacing-x) var(--tw-bg-dotted-spacing-y)",
+          }),
+          "bg-dotted-spacing-y": (value: any) => ({
+            "--tw-bg-dotted-spacing-y": value,
+            "background-size":
+              "var(--tw-bg-dotted-spacing-x) var(--tw-bg-dotted-spacing-y)",
+          }),
+        },
+        {
+          values: theme("spacing"),
+        }
+      );
 
-export default config
+      matchUtilities(
+        {
+          "bg-dotted": (value: any) => ({
+            "--tw-bg-dotted-color": value,
+            "--tw-bg-dotted-radius": "1px",
+            "background-image":
+              "radial-gradient(circle at center, var(--tw-bg-dotted-color) var(--tw-bg-dotted-radius), transparent 0)",
+          }),
+        },
+        {
+          values: flattenColorPalette(theme("colors")),
+          type: "color",
+        }
+      );
+
+      matchUtilities(
+        {
+          "bg-dotted-radius": (value: any) => ({
+            "--tw-bg-dotted-radius": value,
+            "background-image":
+              "radial-gradient(circle at center, var(--tw-bg-dotted-color) var(--tw-bg-dotted-radius), transparent 0)",
+          }),
+        },
+        {
+          values: theme("spacing"),
+        }
+      );
+    },
+  ],
+} satisfies Config;
+
+export default config;
