@@ -20,7 +20,7 @@ import {
 
 function HeroSection() {
   return (
-    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32 dark:bg-dot-white/[0.2] t/[0.2]">
+    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32">
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">
           Frequently Asked Questions (FAQs)
@@ -43,7 +43,7 @@ function HeroSection() {
 
 function FeaturesSection() {
   return (
-    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32 dark:bg-dot-white/[0.2] t/[0.2]">
+    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32">
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">
           Frequently Asked Questions (FAQs)
@@ -66,7 +66,7 @@ function FeaturesSection() {
 
 function BlogShowcaseSection() {
   return (
-    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32 dark:bg-dot-white/[0.2] t/[0.2]">
+    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32">
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">
           Frequently Asked Questions (FAQs)
@@ -89,7 +89,7 @@ function BlogShowcaseSection() {
 
 function PricingSection() {
   return (
-    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32 dark:bg-dot-white/[0.2] t/[0.2]">
+    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32">
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">
           Frequently Asked Questions (FAQs)
@@ -112,7 +112,7 @@ function PricingSection() {
 
 function FaqSection() {
   return (
-    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32 dark:bg-dot-white/[0.2] t/[0.2]">
+    <section className="w-full flex flex-row items-center justify-center pt-32 pb-32">
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">
           Frequently Asked Questions (FAQs)
