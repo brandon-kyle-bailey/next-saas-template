@@ -24,13 +24,20 @@ export function ModeToggleComponent() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button
+          variant="outline"
+          size="icon"
+          className="dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white"
+        >
           <Sun className="h-4 w-4 transition-all dark:scale-0" />
           <Moon className="absolute h-4 w-4 scale-0 transition-all dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent
+        align="end"
+        className="dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white"
+      >
         <DropdownMenuItem
           onClick={() => setTheme(ModeToggleComponentThemeNames.LIGHT)}
         >

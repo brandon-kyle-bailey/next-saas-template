@@ -82,6 +82,7 @@ export default function FooterComponent() {
             {...register("email", { required: true })}
             placeholder="Enter your email"
             type="email"
+            className="dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white"
           />
           <Button type="submit">Sign Up</Button>
         </form>

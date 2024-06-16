@@ -13,14 +13,17 @@ export function NavBarComponent() {
 
   return (
     <div className="flex flex-row justify-between p-2 border-b dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white">
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center p-2">
         <Link href="/">
           <Boxes />
         </Link>
       </div>
-      <div className="flex flex-row space-x-1">
+      <div className="flex flex-row space-x-2">
         <Link href="/" className="">
-          <Button className="rounded-lg" variant="outline">
+          <Button
+            className="rounded-lg dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white"
+            variant="outline"
+          >
             <DashboardIcon className="w-3 h-4" />
             <p className="pl-1">Dashboard</p>
           </Button>
