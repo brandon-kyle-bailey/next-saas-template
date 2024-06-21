@@ -19,7 +19,7 @@ export function NavBarComponent() {
         </Link>
       </div>
       <div className="flex flex-row space-x-2">
-        <Link href="/" className="">
+        <Link href="/dashboard" className="">
           <Button
             className="rounded-lg dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white"
             variant="outline"
