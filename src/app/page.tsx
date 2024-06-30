@@ -6,6 +6,7 @@ import FaqSection from "@/components/custom/sections/landing-page/faq.section.co
 import FeaturesSection from "@/components/custom/sections/landing-page/features.section.component";
 import HeroSection from "@/components/custom/sections/landing-page/hero.section.component";
 import PricingSection from "@/components/custom/sections/landing-page/pricing.section.component";
+import SecondaryFeaturesSection from "@/components/custom/sections/landing-page/secondary-features.section.component";
 import SocialProofSection from "@/components/custom/sections/landing-page/social-proof.section.component";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <SocialProofSection />
         <FeaturesSection />
+        <SecondaryFeaturesSection />
         <BlogShowcaseSection />
         <PricingSection />
         <FaqSection />
