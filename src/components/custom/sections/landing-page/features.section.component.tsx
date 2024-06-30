@@ -27,7 +27,7 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="pt-32 w-full flex flex-row items-center justify-center"
+      className="pt-10 w-full flex flex-row items-center justify-center"
     >
       <div className="flex flex-col lg:flex-row lg:w-2/3 gap-5 p-4">
         <div>

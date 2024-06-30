@@ -70,7 +70,7 @@ export default function PricingSection() {
         "Example Feature Number 3",
       ],
       priceIdMonthly: "price_1PMLCOBPkmIjU4TJHCRHT0Om",
-      priceIdYearly: "price_1PMLCOBPkmIjU4TJHCRHT0Om",
+      priceIdYearly: "prod_QOA2TN9eeSbC2G",
       actionLabel: "Get Started",
     },
     {
@@ -85,7 +85,7 @@ export default function PricingSection() {
       ],
       actionLabel: "Get Started",
       priceIdMonthly: "price_1PMLChBPkmIjU4TJfp6k50so",
-      priceIdYearly: "price_1PMLChBPkmIjU4TJfp6k50so",
+      priceIdYearly: "prod_QOA3cHlvLICfEm",
       popular: true,
     },
     {
@@ -99,15 +99,15 @@ export default function PricingSection() {
         "Super Exclusive Feature",
       ],
       actionLabel: "Contact Sales",
-      priceIdMonthly: "price_1PMLD3BPkmIjU4TJdV1uoSPp",
-      priceIdYearly: "price_1PMLD3BPkmIjU4TJdV1uoSPp",
+      priceIdMonthly: "",
+      priceIdYearly: "",
       exclusive: true,
     },
   ];
   return (
     <section
       id="pricing"
-      className="pt-32 w-full flex flex-row items-center justify-center"
+      className="pt-10 w-full flex flex-row items-center justify-center"
     >
       <div className="text-center">
         <h2 className="text-3xl lg:text-5xl font-bold">

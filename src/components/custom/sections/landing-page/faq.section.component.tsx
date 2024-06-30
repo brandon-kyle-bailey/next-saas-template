@@ -9,7 +9,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="pt-32 w-full flex flex-row items-center justify-center"
+      className="pt-10 w-full flex flex-row items-center justify-center"
     >
       <div className="flex flex-col w-[70%] lg:w-[50%]">
         <h1 className="scroll-m-20 pb-[3rem] text-center text-3xl font-semibold tracking-tight lg:text-4xl">

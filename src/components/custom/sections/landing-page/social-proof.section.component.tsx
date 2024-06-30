@@ -33,7 +33,7 @@ export default function SocialProofSection() {
   return (
     <section
       id="social-proof"
-      className="pt-32 w-full flex flex-row justify-center dark:hidden"
+      className="pt-10 w-full flex flex-row justify-center dark:hidden"
     >
       <div className="w-3/4 px-4 md:px-8">
         <div

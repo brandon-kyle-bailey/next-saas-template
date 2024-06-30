@@ -28,10 +28,10 @@ export default function BlogShowcaseSection() {
   return (
     <section
       id="blog-showcase"
-      className="pt-32 w-full flex flex-row justify-center"
+      className="pt-10 w-full flex flex-row justify-center"
     >
-      <div className="lg:w-2/3 w-[70%]">
-        <h1 className="scroll-m-20 text-3xl md:text-4xl tracking-tight font-semibold">
+      <div className="lg:w-2/3 p-4">
+        <h1 className="scroll-m-20 text-3xl md:text-4xl tracking-tight font-semibold text-center">
           Some sample blog posts
         </h1>
         <p className="text-gray-500 border-b dark:border-neutral-800 pb-4">
