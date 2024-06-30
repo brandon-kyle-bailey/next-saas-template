@@ -34,7 +34,7 @@ export default function BlogShowcaseSection() {
         <h1 className="scroll-m-20 text-3xl md:text-4xl tracking-tight font-semibold text-center">
           Some sample blog posts
         </h1>
-        <p className="text-gray-500 border-b dark:border-neutral-800 pb-4">
+        <p className="text-gray-500 border-b dark:border-neutral-800 pb-4 text-center">
           Some brief description of blog posts here
         </p>
         <div className="mt-5 flex flex-col lg:flex-row gap-5">

@@ -8,6 +8,7 @@ import HeroSection from "@/components/custom/sections/landing-page/hero.section.
 import PricingSection from "@/components/custom/sections/landing-page/pricing.section.component";
 import SecondaryFeaturesSection from "@/components/custom/sections/landing-page/secondary-features.section.component";
 import SocialProofSection from "@/components/custom/sections/landing-page/social-proof.section.component";
+import TestimonialSection from "@/components/custom/sections/landing-page/testimonial.section.component";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <HeroSection />
         <SocialProofSection />
         <FeaturesSection />
+        <TestimonialSection />
         <SecondaryFeaturesSection />
         <BlogShowcaseSection />
         <PricingSection />
