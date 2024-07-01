@@ -44,8 +44,8 @@ export default function SocialProofSection() {
           }}
         >
           {Array(5)
-            .fill(null)
-            .map((index) => (
+            .fill(0)
+            .map((val, index) => (
               <div
                 key={index}
                 className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"

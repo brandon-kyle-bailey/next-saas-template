@@ -11,9 +11,59 @@ import * as React from "react";
 const testimonials = [
   {
     image: "",
-    quote: "",
-    name: "Prime",
-    company: "Prime",
+    id: 1,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 2,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 3,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 4,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 5,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 6,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 7,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
+  },
+  {
+    image: "",
+    id: 8,
+    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    name: "John Smith",
+    company: "Smith Co.",
   },
 ];
 export default function TestimonialSection() {
@@ -25,12 +75,11 @@ export default function TestimonialSection() {
       id="testimonial"
       className="pt-10 w-full flex flex-row items-center justify-center"
     >
-      <div className="lg:w-2/3 p-4">
+      <div className="w-full lg:w-2/3 p-4">
         <h1 className="scroll-m-20 text-3xl md:text-4xl tracking-tight font-semibold text-center">
           What do our customers say?
         </h1>
         <Carousel
-          className=""
           // @ts-ignore: mismatch type error
           plugins={[plugin.current]}
           onMouseEnter={plugin.current.stop}
@@ -39,7 +88,10 @@ export default function TestimonialSection() {
           <CarouselContent>
             {testimonials.map((testimonial) => {
               return (
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem
+                  className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
+                  key={testimonial.id}
+                >
                   <div className="mt-5 text-center border p-6 rounded-md bg-white dark:bg-black flex flex-col items-center justify-center gap-4">
                     <div className="w-24 h-24 bg-black dark:bg-white rounded-full">
                       {testimonial.image}
@@ -54,38 +106,10 @@ export default function TestimonialSection() {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="max-sm:hidden" />
+          <CarouselNext className="max-sm:hidden" />
         </Carousel>
       </div>
-
-      {/* <div className="w-3/4 px-4 md:px-8">
-        <div
-          className="group relative mt-6 flex gap-6 overflow-hidden p-2"
-          style={{
-            maskImage:
-              "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
-          }}
-        >
-          {Array(5)
-            .fill(null)
-            .map((index) => (
-              <div
-                key={index}
-                className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
-              >
-                {logos.map((logo, key) => (
-                  <img
-                    key={key}
-                    src={logo.url}
-                    className="h-10 w-28 px-2"
-                    alt={`${logo.name}`}
-                  />
-                ))}
-              </div>
-            ))}
-        </div>
-      </div> */}
     </section>
   );
 }

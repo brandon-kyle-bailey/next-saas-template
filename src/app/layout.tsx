@@ -30,9 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html lang="en suppressHydrationWarning" className={GeistSans.className}>
-        <head />
-        <body className="dark:bg-black bg-white">
+      <html lang="en suppressHydrationWarning">
+        <body className={GeistSans.className}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

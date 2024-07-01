@@ -19,7 +19,7 @@ export default function FooterComponent() {
     <footer className="border-t dark:border-neutral-800 flex flex-col-reverse lg:flex-row dark:bg-black dark:bg-opacity-50 bg-white">
       <div className="p-10 flex flex-col lg:flex-row justify-center lg:w-1/2">
         <div className="lg:w-1/2">
-          <div className="flex flex-row gap-4 justify-evenly lg:justify-between">
+          <div className="flex flex-col lg:flex-row gap-4 justify-evenly lg:justify-between">
             <div>
               <p className="font-medium">Socials</p>
               <ul className="mt-6 space-y-4 text-sm">

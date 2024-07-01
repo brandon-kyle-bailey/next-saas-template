@@ -99,8 +99,8 @@ export default function PricingSection() {
         "Super Exclusive Feature",
       ],
       actionLabel: "Contact Sales",
-      priceIdMonthly: "",
-      priceIdYearly: "",
+      priceIdMonthly: "nothing",
+      priceIdYearly: "nothing",
       exclusive: true,
     },
   ];
