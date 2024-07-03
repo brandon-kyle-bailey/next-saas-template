@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -9,17 +11,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SignOutButton, useUser } from "@clerk/nextjs";
-import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { CreditCard, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 export function UserProfileComponent() {
   const pathName = usePathname();
+  const router = useRouter();
   const { isSignedIn, user, isLoaded } = useUser();
 
   const handleCustomerPortalSession = async () => {
@@ -33,17 +33,16 @@ export function UserProfileComponent() {
         }
       );
 
-      console.log("data", data);
       if (data.url) {
-        redirect(data.url);
+        router.push(data.url);
       } else {
-        console.error("Failed to create checkout session");
-        toast("Failed to create checkout session");
+        console.error("Failed to create billing session");
+        toast("Failed to create billing session");
         return;
       }
     } catch (error) {
-      console.error("Error during checkout:", error);
-      toast("Error during checkout");
+      console.error("Error during billing session:", error);
+      toast("Error during billing session");
       return;
     }
   };
