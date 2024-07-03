@@ -9,13 +9,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SignOutButton, useUser } from "@clerk/nextjs";
+import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { CreditCard, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
+import { redirect, usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 export function UserProfileComponent() {
+  const pathName = usePathname();
   const { isSignedIn, user, isLoaded } = useUser();
 
   const handleCustomerPortalSession = async () => {
@@ -25,21 +29,13 @@ export function UserProfileComponent() {
         {
           userId: user?.id,
           email: user?.emailAddresses?.[0]?.emailAddress,
+          return_url: pathName,
         }
       );
 
       console.log("data", data);
-      if (data.sessionId) {
-        const stripe = await stripePromise;
-        console.log("stripe", stripe);
-
-        const response = await stripe?.redirectToCheckout({
-          sessionId: data.sessionId,
-        });
-
-        console.log("response", response);
-
-        return response;
+      if (data.url) {
+        redirect(data.url);
       } else {
         console.error("Failed to create checkout session");
         toast("Failed to create checkout session");
@@ -76,7 +72,13 @@ export function UserProfileComponent() {
               <span>Settings</span>
             </DropdownMenuItem>
           </Link>
-          <Link href="/dashboard/billing">
+          <Link
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              handleCustomerPortalSession();
+            }}
+          >
             <DropdownMenuItem>
               <CreditCard className="mr-2 h-4 w-4" />
               <span>Billing</span>

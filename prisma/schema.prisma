@@ -44,7 +44,7 @@ model subscription {
   plan_id                   String
   default_payment_method_id String?
   email                     String
-  user_id                   String
+  user_id                   String  @unique
 }
 
 model subscription_plan {
