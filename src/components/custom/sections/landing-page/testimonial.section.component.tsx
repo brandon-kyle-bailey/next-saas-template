@@ -76,9 +76,6 @@ export default function TestimonialSection() {
       className="pt-10 w-full flex flex-row items-center justify-center"
     >
       <div className="w-full lg:w-2/3 p-4">
-        <h1 className="scroll-m-20 text-3xl md:text-4xl tracking-tight font-semibold text-center">
-          What do our customers say?
-        </h1>
         <Carousel
           // @ts-ignore: mismatch type error
           plugins={[plugin.current]}
@@ -88,18 +85,17 @@ export default function TestimonialSection() {
           <CarouselContent>
             {testimonials.map((testimonial) => {
               return (
-                <CarouselItem
-                  className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
-                  key={testimonial.id}
-                >
-                  <div className="mt-5 text-center border p-6 rounded-md bg-white dark:bg-black flex flex-col items-center justify-center gap-4">
-                    <div className="w-24 h-24 bg-black dark:bg-white rounded-full">
+                <CarouselItem className="" key={testimonial.id}>
+                  <div className="mt-5 p-6 rounded-md flex flex-row gap-4 justify-center items-center">
+                    <div className="w-48 h-48 bg-black dark:bg-white rounded-full">
                       {testimonial.image}
                     </div>
-                    <p className="text-gray-400">"{testimonial.quote}"</p>
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-gray-400">{testimonial.company}</p>
+                    <div className="flex flex-col text-2xl gap-4">
+                      <p className="text-gray-400">"{testimonial.quote}"</p>
+                      <div className="flex flex-row gap-2">
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-gray-400">{testimonial.company}</p>
+                      </div>
                     </div>
                   </div>
                 </CarouselItem>
@@ -113,3 +109,19 @@ export default function TestimonialSection() {
     </section>
   );
 }
+
+// <CarouselItem
+//   className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
+//   key={testimonial.id}
+// >
+//   <div className="mt-5 text-center border p-6 rounded-md dark:bg-black flex flex-col items-center justify-center gap-4">
+//     <div className="w-24 h-24 bg-black dark:bg-white rounded-full">
+//       {testimonial.image}
+//     </div>
+//     <p className="text-gray-400">"{testimonial.quote}"</p>
+//     <div>
+//       <p className="font-semibold">{testimonial.name}</p>
+//       <p className="text-gray-400">{testimonial.company}</p>
+//     </div>
+//   </div>
+// </CarouselItem>;

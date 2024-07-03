@@ -17,8 +17,8 @@ export default function Home() {
       <main className="dark:bg-black bg-white bg-dotted-spacing-4 bg-dotted-gray-200 dark:bg-dotted-neutral-900 pb-32">
         <HeroSection />
         <SocialProofSection />
-        <FeaturesSection />
         <TestimonialSection />
+        <FeaturesSection />
         <SecondaryFeaturesSection />
         <BlogShowcaseSection />
         <PricingSection />
