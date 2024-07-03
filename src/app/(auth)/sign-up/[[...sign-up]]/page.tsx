@@ -1,10 +1,16 @@
 "use client";
+import FooterComponent from "@/components/custom/footer.component";
+import { NavBarComponent } from "@/components/custom/nav-bar.component";
 import { SignUp } from "@clerk/nextjs";
 
 export default function SignUpPage() {
   return (
-    <div className="flex justify-center my-[5rem]">
-      <SignUp />
-    </div>
+    <>
+      <NavBarComponent />
+      <main className="dark:bg-black bg-white bg-dotted-spacing-4 bg-dotted-gray-200 dark:bg-dotted-neutral-900 pb-32 flex flex-row items-center justify-center p-32">
+        <SignUp />
+      </main>
+      <FooterComponent />
+    </>
   );
 }

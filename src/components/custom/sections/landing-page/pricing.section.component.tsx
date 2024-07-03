@@ -60,6 +60,20 @@ export default function PricingSection() {
   };
   const plans = [
     {
+      title: "Free",
+      monthlyPrice: 0,
+      yearlyPrice: 0,
+      description: "Completely free for the hobbyist",
+      features: [
+        "Example Feature Number 1",
+        "Example Feature Number 2",
+        "Example Feature Number 3",
+      ],
+      priceIdMonthly: "",
+      priceIdYearly: "",
+      actionLabel: "Get Started",
+    },
+    {
       title: "Basic",
       monthlyPrice: 10,
       yearlyPrice: 100,

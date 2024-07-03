@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -37,9 +34,9 @@ model payment {
 }
 
 model subscription {
-  id                        Int       @id @default(autoincrement())
-  created_time              DateTime  @default(now())
-  subscription_id           String    @unique
+  id                        Int      @id @default(autoincrement())
+  created_time              DateTime @default(now())
+  subscription_id           String   @unique
   stripe_user_id            String
   status                    String
   start_date                String

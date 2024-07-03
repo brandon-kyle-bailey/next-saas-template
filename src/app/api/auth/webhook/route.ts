@@ -1,6 +1,6 @@
 import { createUserAction } from "@/lib/db/prisma/actions/create/create-user.prisma.action";
 import { updateUserAction } from "@/lib/db/prisma/actions/update/update-user.prisma.action";
-import { WebhookEvent } from "@clerk/nextjs/server";
+import { EmailWebhookEvent, WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
@@ -60,11 +60,22 @@ export async function POST(req: Request) {
         message: "user updated",
       });
     }
-    throw new Error(`Unhandled event type: ${webhookEvent.type}`);
+
+    if (webhookEvent.type === "email.created") {
+      console.log("email.created event with payload", payload);
+      console.log(webhookEvent.data.data?.otp_code);
+      return NextResponse.json({
+        status: 201,
+        message: "handled",
+      });
+    }
+    return new Response(`Unhandled`, {
+      status: 201,
+    });
   } catch (error) {
     console.error("Error occured", error);
     return new Response(`Error: ${error}`, {
-      status: 500,
+      status: 201,
     });
   }
 }

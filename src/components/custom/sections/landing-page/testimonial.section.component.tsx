@@ -68,7 +68,7 @@ const testimonials = [
 ];
 export default function TestimonialSection() {
   const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: true })
   );
   return (
     <section
@@ -86,13 +86,13 @@ export default function TestimonialSection() {
             {testimonials.map((testimonial) => {
               return (
                 <CarouselItem className="" key={testimonial.id}>
-                  <div className="mt-5 p-6 rounded-md flex flex-row gap-4 justify-center items-center">
+                  <div className="mt-5 p-6 rounded-md flex flex-col md:flex-row gap-4 justify-center items-center">
                     <div className="w-48 h-48 bg-black dark:bg-white rounded-full">
                       {testimonial.image}
                     </div>
                     <div className="flex flex-col text-2xl gap-4">
                       <p className="text-gray-400">"{testimonial.quote}"</p>
-                      <div className="flex flex-row gap-2">
+                      <div className="flex flex-col md:flex-row gap-2">
                         <p className="font-semibold">{testimonial.name}</p>
                         <p className="text-gray-400">{testimonial.company}</p>
                       </div>
