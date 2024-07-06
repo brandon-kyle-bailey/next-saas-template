@@ -94,7 +94,7 @@ export default function TestimonialSection() {
                       <p className="text-gray-400">
                         &quot;{testimonial.quote}&quot;
                       </p>
-                      <div className="flex flex-col md:flex-row gap-2">
+                      <div className="flex flex-row lg:flex-col items-center justify-center lg:justify-start lg:items-start md:flex-row gap-2">
                         <p className="font-semibold">{testimonial.name}</p>
                         <p className="text-gray-400">{testimonial.company}</p>
                       </div>
