@@ -68,7 +68,7 @@ const testimonials = [
 ];
 export default function TestimonialSection() {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: true }),
   );
   return (
     <section
@@ -91,7 +91,9 @@ export default function TestimonialSection() {
                       {testimonial.image}
                     </div>
                     <div className="flex flex-col text-2xl gap-4">
-                      <p className="text-gray-400">"{testimonial.quote}"</p>
+                      <p className="text-gray-400">
+                        &quot;{testimonial.quote}&quot;
+                      </p>
                       <div className="flex flex-col md:flex-row gap-2">
                         <p className="font-semibold">{testimonial.name}</p>
                         <p className="text-gray-400">{testimonial.company}</p>
@@ -109,19 +111,3 @@ export default function TestimonialSection() {
     </section>
   );
 }
-
-// <CarouselItem
-//   className="sm:basis-1 md:basis-1/2 lg:basis-1/3"
-//   key={testimonial.id}
-// >
-//   <div className="mt-5 text-center border p-6 rounded-md dark:bg-black flex flex-col items-center justify-center gap-4">
-//     <div className="w-24 h-24 bg-black dark:bg-white rounded-full">
-//       {testimonial.image}
-//     </div>
-//     <p className="text-gray-400">"{testimonial.quote}"</p>
-//     <div>
-//       <p className="font-semibold">{testimonial.name}</p>
-//       <p className="text-gray-400">{testimonial.company}</p>
-//     </div>
-//   </div>
-// </CarouselItem>;

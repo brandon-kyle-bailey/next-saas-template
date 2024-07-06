@@ -7,7 +7,6 @@ import FeaturesSection from "@/components/custom/sections/landing-page/features.
 import HeroSection from "@/components/custom/sections/landing-page/hero.section.component";
 import PricingSection from "@/components/custom/sections/landing-page/pricing.section.component";
 import SecondaryFeaturesSection from "@/components/custom/sections/landing-page/secondary-features.section.component";
-import SocialProofSection from "@/components/custom/sections/landing-page/social-proof.section.component";
 import TestimonialSection from "@/components/custom/sections/landing-page/testimonial.section.component";
 
 export default function Home() {
