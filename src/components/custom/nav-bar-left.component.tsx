@@ -2,6 +2,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const navItems = [
+  { href: "/", name: "Home" },
+  { href: "/dashboard/settings", name: "Settings" },
+];
 export function NavBarLeftComponent() {
   const pathname = usePathname();
   return (
@@ -11,6 +15,17 @@ export function NavBarLeftComponent() {
           Nextjs Starter Kit
         </Link>
       </div>
+      <nav className="px-4 font-medium text-sm">
+        <ul className="flex flex-col">
+          {navItems.map((item) => {
+            return (
+              <li key={item.name}>
+                <Link href={item.href}>{item.name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </div>
   );
 }
