@@ -3,20 +3,8 @@ import clsx from "clsx";
 import { RoutesEnum } from "@/lib/enum/routes.enum";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HomeIcon, Settings } from "lucide-react";
+import { navItems } from "@/lib/nav/nav-items";
 
-const navItems = [
-  {
-    href: RoutesEnum.DASHBOARD,
-    name: "Dashboard",
-    icon: <HomeIcon className="h-3 w-3" />,
-  },
-  {
-    href: RoutesEnum.DASHBOARD_SETTINGS,
-    name: "Settings",
-    icon: <Settings className="h-3 w-3" />,
-  },
-];
 export function NavBarLeftComponent() {
   const pathname = usePathname();
   return (
@@ -41,7 +29,7 @@ export function NavBarLeftComponent() {
               >
                 <Link className="flex flex-row gap-2" href={item.href}>
                   <div className="border rounded-lg border-gray-400 p-1 bg-inherit">
-                    {item.icon}
+                    {item.icon()}
                   </div>
                   {item.name}
                 </Link>
