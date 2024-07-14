@@ -20,8 +20,8 @@ export function NavBarTopComponent({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white text-black w-full flex flex-col">
-      <header className="w-full h-14 border-b border-neutral-300 px-3 flex justify-between">
+    <div className="dark:bg-black bg-white dark:text-white text-black w-full flex flex-col">
+      <header className="w-full h-14 border-b dark:border-neutral-800 border-neutral-300 px-3 flex justify-between">
         <div className="min-[1024px]:hidden">
           <Dialog>
             <SheetTrigger className="h-14 transition">
