@@ -1,6 +1,6 @@
 import { HomeIcon, Settings } from "lucide-react";
 import { RoutesEnum } from "@/lib/enum/routes.enum";
-
+// TODO: some test comment for PR test
 export const navItems = [
   {
     href: RoutesEnum.DASHBOARD,
