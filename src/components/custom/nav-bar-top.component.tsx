@@ -20,7 +20,7 @@ export function NavBarTopComponent({
   children: React.ReactNode;
 }) {
   return (
-    <div className="dark:bg-black bg-white dark:text-white text-black w-full flex flex-col">
+    <div className="dark:bg-black bg-white dark:text-white text-black w-full">
       <header className="w-full h-14 border-b dark:border-neutral-800 border-neutral-300 px-3 flex justify-between">
         <div className="min-[1024px]:hidden">
           <Dialog>

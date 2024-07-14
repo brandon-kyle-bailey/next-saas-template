@@ -10,9 +10,7 @@ export default function DashboardLayout({
     <div className="w-full h-screen flex flex-row">
       <NavBarLeftComponent />
       <NavBarTopComponent>
-        <main className="flex flex-col gap-4 lg:gap-6 p-4 mt-14">
-          {children}
-        </main>
+        <main className="flex flex-col gap-4 lg:gap-6 p-4">{children}</main>
       </NavBarTopComponent>
     </div>
   );
