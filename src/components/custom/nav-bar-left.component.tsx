@@ -8,7 +8,7 @@ import { navItems } from "@/lib/nav/nav-items";
 export function NavBarLeftComponent() {
   const pathname = usePathname();
   return (
-    <div className="hidden lg:block border-r border-neutral-300 dark:border-neutral-800 h-full bg-white dark:bg-black dark:text-white text-black w-72">
+    <div className="fixed hidden lg:block border-r border-neutral-300 dark:border-neutral-800 h-full bg-white dark:bg-black dark:text-white text-black w-72">
       <div className="border-neutral-300 dark:border-neutral-800 flex h-14 items-center justify-between border-b px-3 w-full">
         <Link className="font-semibold" href={RoutesEnum.HOME}>
           Nextjs Starter Kit
