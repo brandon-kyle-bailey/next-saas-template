@@ -15,11 +15,8 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { UserProfileComponent } from "./user-profile.component";
 
 export function NavBarComponent() {
-  const { userId } = useAuth();
-
   return (
     <div className="fixed min-w-full z-10 flex flex-row justify-between p-2 border-b dark:border-neutral-800 dark:bg-black dark:bg-opacity-50 bg-white">
       <div className="min-[768px]:hidden">
@@ -78,7 +75,6 @@ export function NavBarComponent() {
             <p className="pl-1">Dashboard</p>
           </Button>
         </Link>
-        {userId && <UserProfileComponent />}
         <ModeToggleComponent />
       </div>
     </div>

@@ -1,5 +1,5 @@
 "use client";
-import FooterComponent from "@/components/custom/footer.component";
+import FooterComponent from "@/components/custom/sections/landing-page/footer.component";
 import { NavBarComponent } from "@/components/custom/nav-bar.component";
 import { SignUp } from "@clerk/nextjs";
 
