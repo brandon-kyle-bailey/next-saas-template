@@ -30,7 +30,7 @@ import { ModeToggleComponent } from "@/components/custom/mode-toggle.component";
 
 export default function NavTopComponent() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+    <header className="flex h-16 items-center gap-4 border-b bg-muted/40 px-4 lg:px-6">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="shrink-0 md:hidden">

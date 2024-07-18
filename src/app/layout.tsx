@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/providers/ui/theme-provider";
 import { AuthProvider } from "@/lib/providers/auth/auth-provider";
-import { Toaster } from "sonner";
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Next Starter Kit",
