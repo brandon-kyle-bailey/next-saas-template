@@ -1,6 +1,11 @@
 import NavLeftComponent from "@/app/dashboard/(components)/nav-left.component";
 import NavTopComponent from "@/app/dashboard/(components)/nav-top.component";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "The Startup Stack - Dashboard",
+  description: "Starter SAAS kit",
+};
 export default function DashboardLayout({
   children,
 }: {

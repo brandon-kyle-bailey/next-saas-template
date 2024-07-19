@@ -1,36 +1,40 @@
-"use client";
-import FooterComponent from "@/components/custom/sections/landing-page/footer.component";
-import { NavBarComponent } from "@/components/custom/nav-bar.component";
-import CtaSection from "@/components/custom/sections/landing-page/cta.section.component";
-import FaqSection from "@/components/custom/sections/landing-page/faq.section.component";
-import FeaturesSection from "@/components/custom/sections/landing-page/features.section.component";
-import HeroSection from "@/components/custom/sections/landing-page/hero.section.component";
-import PricingSection from "@/components/custom/sections/landing-page/pricing.section.component";
-import SecondaryFeaturesSection from "@/components/custom/sections/landing-page/secondary-features.section.component";
-import TestimonialSection from "@/components/custom/sections/landing-page/testimonial.section.component";
+import HeroComponent from "@/app/(components)/hero.component";
+import NavigationComponent from "@/app/(components)/navigation.component";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "The Startup Stack - An awesome starter kit",
+  description: "Starter SAAS kit",
+};
 export default function Home() {
   return (
-    <>
-      <NavBarComponent />
-      <main className="dark:bg-black bg-white bg-dotted-spacing-4 bg-dotted-gray-200 dark:bg-dotted-neutral-900 pb-32">
-        <HeroSection />
-        <div className="mt-32">
-          <FeaturesSection />
-        </div>
-        <TestimonialSection />
-        <SecondaryFeaturesSection />
-        <div className="mt-32">
-          <PricingSection />
-        </div>
-        <div className="mt-32">
-          <FaqSection />
-        </div>
-        <div className="mt-32">
-          <CtaSection />
-        </div>
-      </main>
-      <FooterComponent />
-    </>
+    <div className="flex flex-col px-10 lg:px-60 py-6 gap-6">
+      <NavigationComponent />
+      <HeroComponent />
+      <section id="features" className="text-center flex flex-col gap-6">
+        <h2 className="text-4xl lg:text-6xl font-semibold">Features</h2>
+        <p className="text-lg lg:text-xl text-muted-foreground">
+          Here are some of the features you&apos;re likely to see in the app.
+        </p>
+      </section>
+      <section id="pricing" className="text-center flex flex-col gap-6">
+        <h2 className="text-4xl lg:text-6xl font-semibold">Pricing</h2>
+        <p className="text-lg lg:text-xl text-muted-foreground">
+          Here are some of the features you&apos;re likely to see in the app.
+        </p>
+      </section>
+      <section id="faq" className="text-center flex flex-col gap-6">
+        <h2 className="text-4xl lg:text-6xl font-semibold">FAQ</h2>
+        <p className="text-lg lg:text-xl text-muted-foreground">
+          Here are some of the features you&apos;re likely to see in the app.
+        </p>
+      </section>
+      <footer id="footer" className="flex justify-between">
+        <h2 className="text-4xl lg:text-6xl font-semibold">Footer</h2>
+        <p className="text-lg lg:text-xl text-muted-foreground">
+          Here are some of the features you&apos;re likely to see in the app.
+        </p>
+      </footer>
+    </div>
   );
 }
