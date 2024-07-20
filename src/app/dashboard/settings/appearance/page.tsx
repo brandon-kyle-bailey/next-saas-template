@@ -1,4 +1,3 @@
-import NavBarComponent from "@/app/dashboard/settings/(components)/nav-bar.component";
 import { AppearanceForm } from "@/app/dashboard/settings/appearance/appearance-form";
 import { Separator } from "@/components/ui/separator";
 

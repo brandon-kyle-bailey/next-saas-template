@@ -1,3 +1,4 @@
+import { ModeToggleComponent } from "@/components/custom/mode-toggle.component";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose } from "@/components/ui/dialog";
 import {
@@ -7,12 +8,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import { Hexagon } from "lucide-react";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -48,6 +44,13 @@ export default function NavigationComponent() {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
+                <Link href="#faq">
+                  <Button variant="outline" className="w-full">
+                    FAQ
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
                 <Link href="/blog">
                   <Button variant="outline" className="w-full">
                     Blog
@@ -73,7 +76,7 @@ export default function NavigationComponent() {
         </Dialog>
       </div>
       <div className="hidden lg:flex justify-between">
-        <NavigationMenu className="flex justify-between">
+        <NavigationMenu className="shadow flex justify-between">
           <NavigationMenuList className="flex flex-row">
             <NavigationMenuItem>
               <Link href="/" legacyBehavior passHref>
@@ -100,6 +103,13 @@ export default function NavigationComponent() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
+              <Link href="#faq" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <p className="text-muted-foreground">FAQ</p>
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
               <Link href="/blog" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <p className="text-muted-foreground">Blog</p>
@@ -115,7 +125,12 @@ export default function NavigationComponent() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Button>Login</Button>
+        <div className="flex flex-row justify-center items-center gap-2">
+          <Link href={"/sign-in"}>
+            <Button>Login</Button>
+          </Link>
+          <ModeToggleComponent />
+        </div>
       </div>
     </div>
   );
