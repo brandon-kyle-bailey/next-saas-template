@@ -3,6 +3,8 @@ import Stripe from "stripe";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import DashboardRedirectAction from "@/app/payments/(components)/actions/dashboard-redirect.component";
 
 // Initialize Stripe with your secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -24,6 +26,7 @@ export default async function SuccessPage({
   } catch (error) {
     console.error(`error getting session: ${error}`);
   }
+
   return (
     <div className="container relative h-screen flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
@@ -59,7 +62,9 @@ export default async function SuccessPage({
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-4xl font-semibold tracking-tight">Welcome!</h1>
             <p className="text-muted-foreground">
-              Congratulations on your purchase! let&apos;s get you started.
+              Congratulations on your purchase! let&apos;s get you started. You
+              will be redirected in a moment. If you&apos;re not redirected,
+              click here
             </p>
             <Link href={"/dashboard"}>
               <Button>Let me in!</Button>
@@ -67,6 +72,7 @@ export default async function SuccessPage({
           </div>
         </div>
       </div>
+      <DashboardRedirectAction url="/dashboard" delay={5000} />
     </div>
   );
 }

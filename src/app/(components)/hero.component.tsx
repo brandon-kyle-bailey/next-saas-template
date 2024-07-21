@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -12,10 +13,14 @@ export default function HeroSection() {
           The all-in-one solution for launching your startup!
         </p>
         <div className="flex justify-center lg:justify-start gap-6">
-          <Button className="p-6">Get Started</Button>
-          <Button className="shadow-lg p-6 bg-background border border-muted text-primary hover:text-background">
-            Request a demo
-          </Button>
+          <Link href="/sign-up">
+            <Button className="p-6">Get Started</Button>
+          </Link>
+          <Link href={"/request-a-demo"}>
+            <Button className="shadow-lg p-6 bg-background border border-muted text-primary hover:text-background">
+              Request a demo
+            </Button>
+          </Link>
         </div>
       </div>
       <Image

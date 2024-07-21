@@ -5,6 +5,7 @@ import HeroSection from "@/app/(components)/hero.component";
 import NavigationSection from "@/app/(components)/navigation.component";
 import PricingSection from "@/app/(components)/pricing.component";
 import TestimonialSection from "@/app/(components)/testimonial.component";
+import UseCaseSection from "@/app/(components)/use-case.component";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function Home() {
       <NavigationSection />
       <HeroSection />
       <TestimonialSection />
+      <UseCaseSection />
       <FeaturesSection />
       <FaqSection />
       <PricingSection />
