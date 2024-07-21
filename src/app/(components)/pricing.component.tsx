@@ -1,12 +1,16 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 import { Check } from "lucide-react";
 
 const pricingPlans = [
   {
     id: "1",
-    productId: "prod_QCkhtmrQOLGaRa",
+    productId: "price_1PMLCOBPkmIjU4TJHCRHT0Om",
     name: "Free",
     description: "What's included in the FREE plan",
     features: [
@@ -20,7 +24,7 @@ const pricingPlans = [
   },
   {
     id: "2",
-    productId: "prod_QCkhtmrQOLGaRa",
+    productId: "price_1PMLCOBPkmIjU4TJHCRHT0Om",
     name: "Free",
     description: "What's included in the FREE plan",
     features: [
@@ -34,7 +38,7 @@ const pricingPlans = [
   },
   {
     id: "3",
-    productId: "prod_QCkhtmrQOLGaRa",
+    productId: "price_1PMLCOBPkmIjU4TJHCRHT0Om",
     name: "Free",
     description: "What's included in the FREE plan",
     features: [
@@ -47,7 +51,42 @@ const pricingPlans = [
     price: "$0",
   },
 ];
+
+const stripeClient = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 export default function PricingSection() {
+  const handleCheckout = async (productId: string) => {
+    try {
+      const { data } = await axios.post(
+        `/api/payments/create-checkout-session`,
+        {
+          priceId: productId,
+          subscription: true,
+        },
+      );
+
+      console.log("data", data);
+      if (data.sessionId) {
+        const stripe = await stripeClient;
+        console.log("stripe", stripe);
+
+        const response = await stripe?.redirectToCheckout({
+          sessionId: data.sessionId,
+        });
+
+        console.log("response", response);
+
+        return response;
+      } else {
+        console.error("Failed to create checkout session");
+        toast({ title: "Failed to create checkout session" });
+        return;
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      toast({ title: "Error during checkout" });
+      return;
+    }
+  };
   return (
     <section id="pricing" className="text-center flex flex-col gap-6">
       <h2 className="text-4xl lg:text-6xl font-semibold">Pricing</h2>
@@ -97,6 +136,9 @@ export default function PricingSection() {
               </ul>
 
               <Button
+                onClick={() => {
+                  handleCheckout(plan.productId);
+                }}
                 className={cn("w-full", {
                   "bg-primary": plan.id === "2",
                 })}

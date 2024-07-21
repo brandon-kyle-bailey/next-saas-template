@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description: "Starter SAAS kit",
 };
 
+// TODO:... log user in and create session if possible?
 export default async function SuccessPage({
   searchParams,
 }: {
