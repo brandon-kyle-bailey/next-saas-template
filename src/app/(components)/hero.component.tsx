@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { ModeToggleComponentThemeNames } from "@/components/custom/mode-toggle.component";
 
 export default function HeroSection() {
+  const { theme } = useTheme();
   return (
     <main id="hero" className="flex flex-col lg:flex-row gap-6">
       <div className="flex flex-col justify-center gap-6 text-center lg:text-start">
@@ -24,11 +28,15 @@ export default function HeroSection() {
         </div>
       </div>
       <Image
-        src=""
+        src={
+          theme === ModeToggleComponentThemeNames.LIGHT
+            ? "/dashboard_light.png"
+            : "/dashboard_dark.png"
+        }
         alt="Product showcase image"
         width="1920"
         height="1080"
-        className="bg-muted-foreground h-full w-full rounded-lg shadow-2xl"
+        className="bg-muted-foreground h-full w-full rounded-lg shadow-2xl dark:shadow-primary"
       />
     </main>
   );

@@ -101,7 +101,8 @@ export default function PricingSection() {
               className={cn(
                 "flex flex-col gap-4 text-left border border-muted p-6 rounded-md bg-background shadow-lg lg:w-1/3",
                 {
-                  "ring ring-primary": plan.id === "2",
+                  "ring-2 ring-primary dark:ring-0 dark:shadow-primary":
+                    plan.id === "2",
                 },
               )}
             >
