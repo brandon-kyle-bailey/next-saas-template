@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html lang="en suppressHydrationWarning">
+      <html className="scroll-smooth" lang="en suppressHydrationWarning">
         <body className={GeistSans.className}>
           <ThemeProvider
             attribute="class"

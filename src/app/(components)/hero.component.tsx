@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-export default function HeroComponent() {
+export default function HeroSection() {
   return (
     <main id="hero" className="flex flex-col lg:flex-row gap-6">
       <div className="flex flex-col justify-center gap-6 text-center lg:text-start">

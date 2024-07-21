@@ -13,7 +13,7 @@ import { Hexagon } from "lucide-react";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export default function NavigationComponent() {
+export default function NavigationSection() {
   return (
     <div id="navigation">
       <div className="lg:hidden">
@@ -37,16 +37,16 @@ export default function NavigationComponent() {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="#pricing">
+                <Link href="#faq">
                   <Button variant="outline" className="w-full">
-                    Pricing
+                    FAQ
                   </Button>
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="#faq">
+                <Link href="#pricing">
                   <Button variant="outline" className="w-full">
-                    FAQ
+                    Pricing
                   </Button>
                 </Link>
               </DialogClose>
@@ -96,16 +96,16 @@ export default function NavigationComponent() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#pricing" legacyBehavior passHref>
+              <Link href="#faq" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-muted-foreground">Pricing</p>
+                  <p className="text-muted-foreground">FAQ</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#faq" legacyBehavior passHref>
+              <Link href="#pricing" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-muted-foreground">FAQ</p>
+                  <p className="text-muted-foreground">Pricing</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

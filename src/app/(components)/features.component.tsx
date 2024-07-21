@@ -34,18 +34,6 @@ const features = [
     imageDark: "/shadcn-dark.png",
   },
   {
-    id: 5,
-    name: "Syntax UI",
-    description: "Beautifully designed components by Syntax UI.",
-    image: "/syntaxUI.svg",
-  },
-  {
-    id: 6,
-    name: "MagicUI",
-    description: "Beautifully designed components by Magic UI.",
-    image: "/magicui.png",
-  },
-  {
     id: 7,
     name: "Postgres (Supabase)",
     description:
