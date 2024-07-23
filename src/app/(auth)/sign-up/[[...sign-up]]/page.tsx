@@ -7,7 +7,7 @@ import { SignUp } from "@clerk/nextjs";
 import AuthenticationMarketingComponent from "@/components/custom/authentication-marketing.component";
 
 export const metadata: Metadata = {
-  title: "Authentication",
+  title: "The Startup Stack - Sign up",
   description: "Authentication forms built using the components.",
 };
 

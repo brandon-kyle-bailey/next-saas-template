@@ -32,7 +32,7 @@ export default function UseCaseSection() {
   const { theme } = useTheme();
   return (
     <section
-      id="hero"
+      id="use-case"
       className="flex flex-col lg:flex-row gap-6 justify-evenly align-middle"
     >
       <Image

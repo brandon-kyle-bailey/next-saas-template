@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-    <div className="bg-dotted-spacing-4 bg-dotted-neutral-200 dark:bg-dotted-neutral-800 flex flex-col px-10 lg:px-60 py-6 gap-20 lg:gap-40">
+    <div className="min-h-screen bg-dotted-spacing-4 bg-dotted-neutral-200 dark:bg-dotted-neutral-800 flex flex-col px-10 lg:px-60 py-6 gap-20 lg:gap-40">
       <NavigationSection />
       <HeroSection />
       <TestimonialSection />

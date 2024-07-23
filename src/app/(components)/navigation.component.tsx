@@ -30,21 +30,28 @@ export default function NavigationSection() {
             </SheetHeader>
             <div className="flex flex-col space-y-3 mt-4">
               <DialogClose asChild>
-                <Link href="#features">
+                <Link href="/#use-case">
+                  <Button variant="outline" className="w-full">
+                    Use Case
+                  </Button>
+                </Link>
+              </DialogClose>
+              <DialogClose asChild>
+                <Link href="/#features">
                   <Button variant="outline" className="w-full">
                     Features
                   </Button>
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="#faq">
+                <Link href="/#faq">
                   <Button variant="outline" className="w-full">
                     FAQ
                   </Button>
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="#pricing">
+                <Link href="/#pricing">
                   <Button variant="outline" className="w-full">
                     Pricing
                   </Button>
@@ -89,21 +96,28 @@ export default function NavigationSection() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#features" legacyBehavior passHref>
+              <Link href="/#use-case" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <p className="text-muted-foreground">Use Case</p>
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/#features" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <p className="text-muted-foreground">Features</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#faq" legacyBehavior passHref>
+              <Link href="/#faq" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <p className="text-muted-foreground">FAQ</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#pricing" legacyBehavior passHref>
+              <Link href="/#pricing" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <p className="text-muted-foreground">Pricing</p>
                 </NavigationMenuLink>
