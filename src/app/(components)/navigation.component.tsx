@@ -65,7 +65,7 @@ export default function NavigationSection() {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="/documentation">
+                <Link href="/docs/getting-started/introduction">
                   <Button variant="outline" className="w-full">
                     Documentation
                   </Button>
@@ -131,7 +131,11 @@ export default function NavigationSection() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/documentation" legacyBehavior passHref>
+              <Link
+                href="/docs/getting-started/introduction"
+                legacyBehavior
+                passHref
+              >
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <p className="text-muted-foreground">Documentation</p>
                 </NavigationMenuLink>

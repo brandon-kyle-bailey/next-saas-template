@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/providers/ui/theme-provider";
 import { AuthProvider } from "@/lib/providers/auth/auth-provider";
 import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
@@ -30,8 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html className="scroll-smooth" lang="en suppressHydrationWarning">
-        <body className={GeistSans.className}>
+      <html className="scroll-smooth" lang="en" suppressHydrationWarning>
+        <body
+          className={`${GeistSans.variable} ${GeistMono.variable} font-regular`}
+          // className={GeistSans.className} suppressHydrationWarning>
+          suppressHydrationWarning
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

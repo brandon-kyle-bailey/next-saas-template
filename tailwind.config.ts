@@ -101,6 +101,7 @@ const config = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
@@ -124,7 +125,7 @@ const config = {
         },
         {
           values: theme("spacing"),
-        }
+        },
       );
 
       matchUtilities(
@@ -139,7 +140,7 @@ const config = {
         {
           values: flattenColorPalette(theme("colors")),
           type: "color",
-        }
+        },
       );
 
       matchUtilities(
@@ -152,7 +153,7 @@ const config = {
         },
         {
           values: theme("spacing"),
-        }
+        },
       );
     },
   ],

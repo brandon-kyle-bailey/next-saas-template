@@ -1,10 +1,11 @@
+"use client";
 import { Metadata } from "next";
 import GoBackButton from "@/components/custom/go-back.buttom";
 import AuthenticationMarketingComponent from "@/components/custom/authentication-marketing.component";
 
 export const metadata: Metadata = {
-  title: "The Startup Stack - Not Found",
-  description: "Destination not found",
+  title: "The Startup Stack - Error",
+  description: "Some error",
 };
 
 export default function NotFoundPage() {
@@ -18,8 +19,8 @@ export default function NotFoundPage() {
               It&apos;s not you, it&apos;s me...
             </h1>
             <p className="text-muted-foreground">
-              Looks like you&apos;ve taken a wrong turn. Let&apos;s get you back
-              on track!
+              It appears something has gone wrong! Don&apos;t worry, we&apos;re
+              looking into it.
             </p>
             <GoBackButton />
           </div>
