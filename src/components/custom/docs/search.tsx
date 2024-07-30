@@ -9,10 +9,10 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { page_routes } from "@/lib/routes-config";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "@/components/custom/docs/anchor";
+import { page_routes } from "@/lib/docs/routes-config";
 
 export default function Search() {
   const [searchedInput, setSearchedInput] = useState("");

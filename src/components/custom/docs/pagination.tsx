@@ -1,4 +1,4 @@
-import { getPreviousNext } from "@/lib/markdown";
+import { getPreviousNext } from "@/lib/docs/markdown";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 

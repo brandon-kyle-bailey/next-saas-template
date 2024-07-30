@@ -1,4 +1,3 @@
-import { ROUTES } from "@/lib/routes-config";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Logo, NavMenu } from "@/components/custom/docs/navbar";
 import { FooterButtons } from "@/components/custom/docs/footer";
 import Anchor from "@/components/custom/docs/anchor";
+import { DOCS_ROUTES } from "@/lib/docs/routes-config";
 
 export function Leftbar() {
   return (
@@ -56,7 +56,7 @@ export function SheetLeftbar() {
 function Menu({ isSheet = false }) {
   return (
     <>
-      {ROUTES.map(({ href, items, title }) => {
+      {DOCS_ROUTES.map(({ href, items, title }) => {
         return (
           <div className="flex flex-col gap-3 mt-5" key={href}>
             <h4 className="font-medium sm:text-sm">{title}</h4>

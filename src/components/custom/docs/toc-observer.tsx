@@ -1,6 +1,6 @@
 "use client";
 
-import { getTocs } from "@/lib/markdown";
+import { getTocs } from "@/lib/docs/markdown";
 import clsx from "clsx";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -26,7 +26,7 @@ export default function TocObserver({ data }: Props) {
     });
 
     const elements = data.map((item) =>
-      document.getElementById(item.href.slice(1))
+      document.getElementById(item.href.slice(1)),
     );
 
     elements.forEach((el) => {

@@ -1,8 +1,8 @@
 import DocsBreadcrumb from "@/components/custom/docs/docs-breadcrumb";
 import Pagination from "@/components/custom/docs/pagination";
 import Toc from "@/components/custom/docs/toc";
-import { getMarkdownForSlug } from "@/lib/docs/markdown";
-import { page_routes } from "@/lib/docs/routes-config";
+import { getMarkdownForSlug } from "@/lib/blog/markdown";
+import { page_routes } from "@/lib/blog/routes-config";
 import { notFound } from "next/navigation";
 import { PropsWithChildren, cache } from "react";
 
@@ -30,7 +30,6 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
           <Pagination pathname={pathName} />
         </Markdown>
       </div>
-      <Toc path={pathName} />
     </div>
   );
 }

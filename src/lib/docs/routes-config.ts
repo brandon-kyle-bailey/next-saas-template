@@ -1,5 +1,5 @@
 // for page navigation & to sort on leftbar
-export const ROUTES = [
+export const DOCS_ROUTES = [
   {
     title: "Getting Started",
     href: "getting-started",
@@ -26,7 +26,6 @@ export const ROUTES = [
     href: "react-hooks",
     items: [
       { title: "useSession", href: "/use-session" },
-
       { title: "useFetch", href: "/use-fetch" },
       { title: "useAuth", href: "/use-auth" },
       { title: "useProduct", href: "/use-product" },
@@ -47,7 +46,7 @@ export const ROUTES = [
   },
 ];
 
-export const page_routes = ROUTES.map(({ href, items }) => {
+export const page_routes = DOCS_ROUTES.map(({ href, items }) => {
   return items.map((link) => {
     return {
       title: link.title,

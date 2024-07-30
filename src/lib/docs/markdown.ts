@@ -29,7 +29,7 @@ const components = {
 
 export async function getMarkdownForSlug(slug: string) {
   try {
-    const contentPath = getContentPath(slug);
+    const contentPath = getDocsContentPath(slug);
     const rawMdx = await fs.readFile(contentPath, "utf-8");
     return await compileMDX<MdxFrontmatter>({
       source: rawMdx,
@@ -55,7 +55,7 @@ export async function getMarkdownForSlug(slug: string) {
 }
 
 export async function getTocs(slug: string) {
-  const contentPath = getContentPath(slug);
+  const contentPath = getDocsContentPath(slug);
   const rawMdx = await fs.readFile(contentPath, "utf-8");
   // captures between ## - #### can modify accordingly
   const headingsRegex = /^(#{2,4})\s(.+)$/gm;
@@ -87,7 +87,7 @@ function sluggify(text: string) {
   return slug.replace(/[^a-z0-9-]/g, "");
 }
 
-function getContentPath(slug: string) {
+function getDocsContentPath(slug: string) {
   return path.join(process.cwd(), "/src/contents/docs/", `${slug}.mdx`);
 }
 
