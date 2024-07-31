@@ -20,9 +20,7 @@ export default function TocObserver({ data }: Props) {
     };
 
     observer.current = new IntersectionObserver(handleIntersect, {
-      root: null,
-      rootMargin: "-20px 0px 0px 0px",
-      threshold: 0.1,
+      threshold: 0.75,
     });
 
     const elements = data.map((item) =>
@@ -57,7 +55,7 @@ export default function TocObserver({ data }: Props) {
               "pl-0": level == 2,
               "pl-4": level == 3,
               "pl-8 ": level == 4,
-              "font-medium text-primary": activeId == href.slice(1),
+              "font-medium text-primary": activeId === href.slice(1),
             })}
           >
             {text}

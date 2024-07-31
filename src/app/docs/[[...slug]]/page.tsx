@@ -13,6 +13,7 @@ type PageProps = {
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
 export default async function DocsPage({ params: { slug = [] } }: PageProps) {
+  slug.unshift("docs");
   const pathName = slug.join("/");
   const res = await cachedGetMarkdownForSlug(pathName);
 
@@ -44,6 +45,7 @@ function Markdown({ children }: PropsWithChildren) {
 }
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
+  slug.unshift("docs");
   const pathName = slug.join("/");
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return {};

@@ -37,9 +37,9 @@ export default function UseCaseSection() {
     >
       <Image
         src={
-          theme === ModeToggleComponentThemeNames.LIGHT
-            ? "/settings_light.png"
-            : "/settings_dark.png"
+          theme === ModeToggleComponentThemeNames.DARK
+            ? "/settings_dark.png"
+            : "/settings_light.png"
         }
         alt="Product showcase image"
         width="1920"

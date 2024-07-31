@@ -1,17 +1,16 @@
+import { promises as fs } from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
-import { promises as fs } from "fs";
-import remarkGfm from "remark-gfm";
-import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
-import { page_routes } from "./routes-config";
+import rehypePrism from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 
 // custom components imports
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/custom/docs/pre";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type MdxFrontmatter = {
   title: string;
@@ -29,7 +28,7 @@ const components = {
 
 export async function getMarkdownForSlug(slug: string) {
   try {
-    const contentPath = getDocsContentPath(slug);
+    const contentPath = getContentPath(slug);
     const rawMdx = await fs.readFile(contentPath, "utf-8");
     return await compileMDX<MdxFrontmatter>({
       source: rawMdx,
@@ -55,7 +54,7 @@ export async function getMarkdownForSlug(slug: string) {
 }
 
 export async function getTocs(slug: string) {
-  const contentPath = getDocsContentPath(slug);
+  const contentPath = getContentPath(slug);
   const rawMdx = await fs.readFile(contentPath, "utf-8");
   // captures between ## - #### can modify accordingly
   const headingsRegex = /^(#{2,4})\s(.+)$/gm;
@@ -74,11 +73,14 @@ export async function getTocs(slug: string) {
   return extractedHeadings;
 }
 
-export function getPreviousNext(path: string) {
-  const index = page_routes.findIndex(({ href }) => href == path);
+export function getPreviousNext(
+  routes: { title: string; href: string }[],
+  path: string,
+) {
+  const index = routes.findIndex(({ href }) => href == path);
   return {
-    prev: page_routes[index - 1],
-    next: page_routes[index + 1],
+    prev: routes[index - 1],
+    next: routes[index + 1],
   };
 }
 
@@ -87,8 +89,8 @@ function sluggify(text: string) {
   return slug.replace(/[^a-z0-9-]/g, "");
 }
 
-function getDocsContentPath(slug: string) {
-  return path.join(process.cwd(), "/src/contents/docs/", `${slug}.mdx`);
+function getContentPath(slug: string) {
+  return path.join(process.cwd(), "/src/contents/", `${slug}.mdx`);
 }
 
 // for copying the code

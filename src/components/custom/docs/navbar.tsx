@@ -1,17 +1,17 @@
-import { GithubIcon, TwitterIcon, HexagonIcon, Hexagon } from "lucide-react";
-import Link from "next/link";
-import { SheetClose } from "@/components/ui/sheet";
+import Anchor from "@/components/custom/docs/anchor";
 import { SheetLeftbar } from "@/components/custom/docs/leftbar";
 import Search from "@/components/custom/docs/search";
+import { ModeToggleComponent } from "@/components/custom/mode-toggle.component";
 import { buttonVariants } from "@/components/ui/button";
-import { ModeToggle } from "@/components/custom/docs/theme-toggle";
-import Anchor from "@/components/custom/docs/anchor";
+import { SheetClose } from "@/components/ui/sheet";
 import { page_routes } from "@/lib/docs/routes-config";
+import { GithubIcon, Hexagon, TwitterIcon } from "lucide-react";
+import Link from "next/link";
 
 export const NAVLINKS = [
   {
     title: "Documentation",
-    href: `/docs/${page_routes[0].href}`,
+    href: `${page_routes[0].href}`,
   },
   {
     title: "Examples",
@@ -66,7 +66,7 @@ export function Navbar() {
               >
                 <TwitterIcon className="h-[1.1rem] w-[1.1rem]" />
               </Link>
-              <ModeToggle />
+              <ModeToggleComponent />
             </div>
           </div>
         </div>

@@ -89,7 +89,7 @@ export default function Search() {
                 >
                   <Anchor
                     className="dark:hover:bg-neutral-900 hover:bg-neutral-100 w-full p-2.5 px-3 rounded-sm text-[15px] flex items-center gap-2.5"
-                    href={`/docs/${item.href}`}
+                    href={`${item.href}`}
                     activeClassName="dark:bg-neutral-900 bg-neutral-100"
                   >
                     <FileTextIcon className="h-[1.1rem] w-[1.1rem]" />{" "}

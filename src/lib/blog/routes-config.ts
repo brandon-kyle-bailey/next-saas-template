@@ -1,9 +1,8 @@
-// for page navigation & to sort on leftbar
 export const BLOG_ROUTES = [
   {
     title: "Getting Started",
     href: "getting-started",
-    items: [{ title: "Introduction", href: "/introduction" }],
+    items: [{ title: "Installation", href: "/blog/installation" }],
   },
 ];
 

@@ -1,4 +1,3 @@
-// for page navigation & to sort on leftbar
 export const DOCS_ROUTES = [
   {
     title: "Getting Started",

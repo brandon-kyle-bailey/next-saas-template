@@ -29,9 +29,9 @@ export default function HeroSection() {
       </div>
       <Image
         src={
-          theme === ModeToggleComponentThemeNames.LIGHT
-            ? "/dashboard_light.png"
-            : "/dashboard_dark.png"
+          theme === ModeToggleComponentThemeNames.DARK
+            ? "/dashboard_dark.png"
+            : "/dashboard_light.png"
         }
         alt="Product showcase image"
         width="1920"
