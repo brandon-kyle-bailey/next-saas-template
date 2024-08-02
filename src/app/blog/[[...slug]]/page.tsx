@@ -1,8 +1,10 @@
 import Pagination from "@/components/custom/docs/pagination";
-import { getMarkdownForSlug } from "@/lib/docs/markdown";
-import { page_routes } from "@/lib/docs/routes-config";
+import { getMarkdownForSlug } from "@/lib/markdown";
+import { page_routes } from "@/lib/blog/routes-config";
 import { notFound } from "next/navigation";
 import { PropsWithChildren, cache } from "react";
+import DocsBreadcrumb from "@/components/custom/docs/docs-breadcrumb";
+import Toc from "@/components/custom/docs/toc";
 
 type PageProps = {
   params: { slug: string[] };
@@ -10,22 +12,31 @@ type PageProps = {
 
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
-export default async function DocsPage({ params: { slug = [] } }: PageProps) {
-  slug.unshift("docs");
-  const pathName = slug.join("/");
+export default async function BlogPage({ params: { slug = [] } }: PageProps) {
+  slug.unshift("blog");
+  let pathName = slug.join("/");
+  if (pathName === "blog") {
+    pathName = page_routes[0].href;
+    slug = page_routes[0].href.split("/");
+  }
+  console.log(pathName);
   const res = await cachedGetMarkdownForSlug(pathName);
 
   if (!res) notFound();
   return (
-    <div className="flex pt-10 justify-center align-middle items-center w-full">
-      <Markdown>
-        <h1>{res.frontmatter.title}</h1>
-        <p className="-mt-4 text-muted-foreground text-[16.5px]">
-          {res.frontmatter.description}
-        </p>
-        <div>{res.content}</div>
-        <Pagination pathname={pathName} />
-      </Markdown>
+    <div className="flex items-start gap-12">
+      <div className="flex-[3] pt-10">
+        <DocsBreadcrumb paths={slug} />
+        <Markdown>
+          <h1>{res.frontmatter.title}</h1>
+          <p className="-mt-4 text-muted-foreground text-[16.5px]">
+            {res.frontmatter.description}
+          </p>
+          <div>{res.content}</div>
+          <Pagination page_routes={page_routes} pathname={pathName} />
+        </Markdown>
+      </div>
+      <Toc path={pathName} />
     </div>
   );
 }
@@ -39,8 +50,12 @@ function Markdown({ children }: PropsWithChildren) {
 }
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
-  slug.unshift("docs");
-  const pathName = slug.join("/");
+  slug.unshift("blog");
+  let pathName = slug.join("/");
+  if (pathName === "blog") {
+    pathName = page_routes[0].href;
+    slug = page_routes[0].href.split("/");
+  }
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return {};
   const { frontmatter } = res;

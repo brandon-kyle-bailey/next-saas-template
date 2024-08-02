@@ -1,8 +1,15 @@
 export const BLOG_ROUTES = [
   {
     title: "Getting Started",
-    href: "getting-started",
-    items: [{ title: "Installation", href: "/blog/installation" }],
+    href: "blog/getting-started",
+    items: [
+      { title: "Introduction", href: "/introduction" },
+      { title: "Installation", href: "/installation" },
+      { title: "Quick Start Guide", href: "/quick-start-guide" },
+      { title: "Project Structure", href: "/project-structure" },
+      { title: "Changelog", href: "/changelog" },
+      { title: "FAQ", href: "/faq" },
+    ],
   },
 ];
 

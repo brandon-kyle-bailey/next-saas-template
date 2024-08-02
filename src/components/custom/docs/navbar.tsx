@@ -4,39 +4,36 @@ import Search from "@/components/custom/docs/search";
 import { ModeToggleComponent } from "@/components/custom/mode-toggle.component";
 import { buttonVariants } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
-import { page_routes } from "@/lib/docs/routes-config";
 import { GithubIcon, Hexagon, TwitterIcon } from "lucide-react";
 import Link from "next/link";
 
 export const NAVLINKS = [
   {
     title: "Documentation",
-    href: `${page_routes[0].href}`,
-  },
-  {
-    title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
-    href: "#",
-  },
-  {
-    title: "Community",
-    href: "#",
+    href: "/docs",
   },
   {
     title: "Blog",
-    href: "#",
+    href: "/blog",
   },
 ];
 
-export function Navbar() {
+export function Navbar({
+  page_routes,
+  routes,
+}: {
+  page_routes: { title: string; href: string }[];
+  routes: {
+    href: string;
+    items: { href: string; title: string }[];
+    title: string;
+  }[];
+}) {
   return (
     <nav className="w-full border-b h-16 sticky top-0 z-50 lg:px-4 px-2 backdrop-filter backdrop-blur-xl bg-opacity-5">
       <div className="sm:p-3 p-2 max-w-[1530px] mx-auto h-full flex items-center justify-between gap-2">
         <div className="flex items-center gap-5">
-          <SheetLeftbar />
+          <SheetLeftbar routes={routes} />
           <div className="flex items-center gap-8">
             <div className="sm:flex hidden">
               <Logo />
@@ -49,7 +46,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <Search />
+            <Search page_routes={page_routes} />
             <div className="flex">
               <Link
                 href="https://github.com/brandon-kyle-bailey"

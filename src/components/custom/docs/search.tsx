@@ -12,9 +12,12 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "@/components/custom/docs/anchor";
-import { page_routes } from "@/lib/docs/routes-config";
 
-export default function Search() {
+export default function Search({
+  page_routes,
+}: {
+  page_routes: { title: string; href: string }[];
+}) {
   const [searchedInput, setSearchedInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,7 +40,7 @@ export default function Search() {
       page_routes.filter((item) =>
         item.title.toLowerCase().includes(searchedInput.toLowerCase()),
       ),
-    [searchedInput],
+    [searchedInput, page_routes],
   );
 
   return (
@@ -54,7 +57,7 @@ export default function Search() {
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
             <Input
               className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm "
-              placeholder="Search documentation..."
+              placeholder="Search"
               type="search"
             />
             <div className="sm:flex hidden absolute top-1/2 -translate-y-1/2 right-2 text-xs font-medium font-mono items-center gap-0.5 dark:bg-neutral-700 bg-zinc-200 p-1 rounded-sm">

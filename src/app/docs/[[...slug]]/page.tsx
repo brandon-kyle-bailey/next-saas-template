@@ -1,7 +1,7 @@
 import DocsBreadcrumb from "@/components/custom/docs/docs-breadcrumb";
 import Pagination from "@/components/custom/docs/pagination";
 import Toc from "@/components/custom/docs/toc";
-import { getMarkdownForSlug } from "@/lib/docs/markdown";
+import { getMarkdownForSlug } from "@/lib/markdown";
 import { page_routes } from "@/lib/docs/routes-config";
 import { notFound } from "next/navigation";
 import { PropsWithChildren, cache } from "react";
@@ -14,7 +14,11 @@ const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
 export default async function DocsPage({ params: { slug = [] } }: PageProps) {
   slug.unshift("docs");
-  const pathName = slug.join("/");
+  let pathName = slug.join("/");
+  if (pathName === "docs") {
+    pathName = page_routes[0].href;
+    slug = page_routes[0].href.split("/");
+  }
   const res = await cachedGetMarkdownForSlug(pathName);
 
   if (!res) notFound();
@@ -28,7 +32,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
             {res.frontmatter.description}
           </p>
           <div>{res.content}</div>
-          <Pagination pathname={pathName} />
+          <Pagination page_routes={page_routes} pathname={pathName} />
         </Markdown>
       </div>
       <Toc path={pathName} />
@@ -46,7 +50,11 @@ function Markdown({ children }: PropsWithChildren) {
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   slug.unshift("docs");
-  const pathName = slug.join("/");
+  let pathName = slug.join("/");
+  if (pathName === "docs") {
+    pathName = page_routes[0].href;
+    slug = page_routes[0].href.split("/");
+  }
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return {};
   const { frontmatter } = res;

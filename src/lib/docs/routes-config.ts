@@ -1,7 +1,7 @@
 export const DOCS_ROUTES = [
   {
     title: "Getting Started",
-    href: "getting-started",
+    href: "docs/getting-started",
     items: [
       { title: "Introduction", href: "/introduction" },
       { title: "Installation", href: "/installation" },
@@ -13,7 +13,7 @@ export const DOCS_ROUTES = [
   },
   {
     title: "Server Actions",
-    href: "server-actions",
+    href: "docs/server-actions",
     items: [
       { title: "getSession", href: "/getSession" },
       { title: "getToken", href: "/getToken" },
@@ -22,7 +22,7 @@ export const DOCS_ROUTES = [
   },
   {
     title: "React Hooks",
-    href: "react-hooks",
+    href: "docs/react-hooks",
     items: [
       { title: "useSession", href: "/use-session" },
       { title: "useFetch", href: "/use-fetch" },
